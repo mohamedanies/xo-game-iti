@@ -74,6 +74,9 @@ public class boardController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        player1.setText(TwoModeController.namex);
+        player2.setText(TwoModeController.nameo);
+        
         button8.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -338,7 +341,7 @@ public class boardController implements Initializable {
             if (xTurn == true) {
                 score1.setText(Integer.valueOf(score1.getText()) + 1 + "");
             } else {
-                score1.setText(Integer.valueOf(score1.getText()) + 1 + "");
+                score2.setText(Integer.valueOf(score2.getText()) + 1 + "");
             }
         }
     }

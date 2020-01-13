@@ -47,6 +47,8 @@ public class TwoModeController implements Initializable {
     FXMLLoader fxmlLoader;
     Parent root1;
     Stage stage;
+    public static String namex;
+    public static String nameo;
 
     /**
      * Initializes the controller class.
@@ -57,7 +59,16 @@ public class TwoModeController implements Initializable {
 
             @Override
             public void handle(MouseEvent event) {
-                System.out.println("esraa");
+                if (Textnamex.getText() != null && Textnamex.getText().length() != 0 && Textnamex.getText() != " ") {
+                    namex = Textnamex.getText() + " :";
+                } else {
+                    namex = "playerx " + ":";
+                }
+                if (Textnameo.getText() != "" && Textnameo.getText() != null && Textnameo.getText().length() != 0) {
+                    nameo = Textnameo.getText() + " :";
+                } else {
+                    nameo = "playery " + ":";
+                }
 
                 try {
 
@@ -68,13 +79,24 @@ public class TwoModeController implements Initializable {
                     //stage.initStyle(StageStyle.UNDECORATED);
                     stage.setTitle("Enter name");
                     stage.setScene(new Scene(root1));
-                   stage.setResizable(false);
+                    stage.setResizable(false);
                     stage.show();
                 } catch (IOException ex) {
                     Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
+        });
+        Cancelbtn.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+
+                Stage stage = (Stage) Cancelbtn.getScene().getWindow();
+                stage.close();
+
+            }
+
         });
 
     }
