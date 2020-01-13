@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="Anchorpane" prefHeight="529.0" prefWidth="455.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="singlemode.singleFormController">
+   <children>
+      <ImageView fx:id="Imgback" fitHeight="539.0" fitWidth="463.0" layoutX="-8.0" layoutY="-5.0">
+         <image>
+            <Image url="@../assets/bg.jpg" />
+         </image>
+      </ImageView>
+      <TextField fx:id="Textname" layoutX="55.0" layoutY="184.0" prefHeight="39.0" prefWidth="338.0" promptText="Enter Your Name Please">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </TextField>
+      <Label layoutX="57.0" layoutY="140.0" prefHeight="39.0" prefWidth="115.0" text="Player Name" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="91.0" layoutY="76.0" prefHeight="45.0" prefWidth="280.0" text="Single Player Mode" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="30.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="ChooseX" layoutX="109.0" layoutY="250.0" mnemonicParsing="false" text="X" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="ChooseY" layoutX="108.0" layoutY="293.0" mnemonicParsing="false" text="O" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </RadioButton>
+      <Button fx:id="Okbtn" layoutX="120.0" layoutY="403.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="82.0" text="OK">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="Cancelbtn" layoutX="240.0" layoutY="404.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="82.0" text="Cancel">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font>
+      </Button>
+      <CheckBox layoutX="329.0" layoutY="277.0" mnemonicParsing="false">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </CheckBox>
+      <Label layoutX="191.0" layoutY="273.0" text="Record Game ?" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

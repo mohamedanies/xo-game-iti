@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="twomode.boardController">
+    <children>
+        <ImageView fx:id="bg" fitHeight="500.0" fitWidth="600.0" pickOnBounds="true">
+            <viewport>
+                <Rectangle2D />
+            </viewport>
+            <image>
+                <Image url="@../assets/bg.jpg" />
+            </image>
+            <cursor>
+                <Cursor fx:constant="E_RESIZE" />
+            </cursor>
+        </ImageView>
+        <Line endX="116.0" endY="173.0" layoutX="268.0" layoutY="272.0" startX="116.0" startY="-221.0" stroke="WHITE" strokeWidth="4.0" />
+        <Line endX="15.0" endY="261.0" layoutX="199.0" layoutY="187.0" startX="15.0" startY="-136.0" stroke="WHITE" strokeWidth="4.0" />
+        <Line endX="373.0" endY="41.0" layoutX="166.0" layoutY="149.0" startX="-108.0" startY="41.0" stroke="WHITE" strokeWidth="4.0">
+            <effect>
+                <Glow level="0.29" />
+            </effect>
+        </Line>
+        <Line endX="372.0" endY="-14.0" layoutX="164.0" layoutY="330.0" startX="-102.0" startY="-14.0" stroke="WHITE" strokeWidth="4.0" />
+        <Button fx:id="button1" contentDisplay="TEXT_ONLY" layoutX="71.0" layoutY="60.0" mnemonicParsing="false" opacity="0.0" pickOnBounds="false" prefHeight="122.0" prefWidth="136.0" textFill="#291557" textOverrun="LEADING_WORD_ELLIPSIS">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="48.0" />
+            </font>
+      
+        </Button>
+        <Button fx:id="button2" alignment="CENTER" layoutX="221.0" layoutY="61.0" mnemonicParsing="false" opacity="0.0" prefHeight="121.0" prefWidth="155.0" textFill="#291557">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="48.0" />
+            </font>
+        </Button>
+        <Button fx:id="button3" alignment="CENTER" layoutX="392.0" layoutY="61.0" mnemonicParsing="false" opacity="0.0" prefHeight="121.0" prefWidth="137.0" textFill="#291557">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="48.0" />
+            </font>
+        </Button>
+        <Button fx:id="button4" alignment="CENTER" layoutX="72.0" layoutY="197.0" mnemonicParsing="false" opacity="0.0" prefHeight="110.0" prefWidth="133.0">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="48.0" />
+            </font>
+        </Button>
+        <Button fx:id="button6" layoutX="393.0" layoutY="197.0" mnemonicParsing="false" opacity="0.0" prefHeight="110.0" prefWidth="136.0" textFill="#291557">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="48.0" />
+            </font>
+        </Button>
+        <Button fx:id="button5" alignment="CENTER" layoutX="223.0" layoutY="197.0" mnemonicParsing="false" opacity="0.0" prefHeight="110.0" prefWidth="150.0" textFill="#291557">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="48.0" />
+            </font>
+        </Button>
+        <Button fx:id="button7" alignment="CENTER" layoutX="72.0" layoutY="326.0" mnemonicParsing="false" opacity="0.0" prefHeight="112.0" prefWidth="134.0" textFill="#291557">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="48.0" />
+            </font>
+        </Button>
+        <Button fx:id="button8" alignment="CENTER" layoutX="222.0" layoutY="327.0" mnemonicParsing="false" opacity="0.0" prefHeight="110.0" prefWidth="153.0">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="48.0" />
+            </font>
+        </Button>
+        <Button fx:id="button9" alignment="CENTER" layoutX="394.0" layoutY="328.0" mnemonicParsing="false" opacity="0.0" prefHeight="110.0" prefWidth="135.0">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="48.0" />
+            </font>
+        </Button>
+        <Label fx:id="player1" layoutX="90.0" layoutY="11.0" prefHeight="23.0" prefWidth="80.0" text="player1:" textFill="WHITE">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="18.0" />
+            </font>
+        </Label>
+        <Label fx:id="score1" layoutX="164.0" layoutY="12.0" prefHeight="22.0" prefWidth="27.0" text="0" textFill="WHITE">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="18.0" />
+            </font>
+        </Label>
+        <Label fx:id="player2" layoutX="261.0" layoutY="11.0" prefHeight="22.0" prefWidth="73.0" text="player2:" textFill="WHITE">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="18.0" />
+            </font>
+        </Label>
+        <Label fx:id="score2" layoutX="339.0" layoutY="11.0" prefHeight="22.0" prefWidth="19.0" text="0" textFill="WHITE">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="18.0" />
+            </font>
+        </Label>
+        <ImageView fx:id="newGame" fitHeight="30.0" fitWidth="30.0" layoutX="388.0" layoutY="466.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@/assets/refresh.png" />
+            </image>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </ImageView>
+        <ImageView fx:id="backButton" fitHeight="30.0" fitWidth="30.0" layoutX="157.0" layoutY="466.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@/assets/back.png" />
+            </image>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </ImageView>
+        <Label fx:id="draw" layoutX="410.0" layoutY="12.0" text="Draw:" textFill="WHITE">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="18.0" />
+            </font>
+        </Label>
+        <Label fx:id="drawScore" layoutX="468.0" layoutY="13.0" prefHeight="22.0" prefWidth="27.0" text="0" textFill="WHITE">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="18.0" />
+            </font>
+        </Label>
+    </children>
+    <stylesheets>
+        <URL value="@/style/game.css" />
+    </stylesheets>
+</AnchorPane>

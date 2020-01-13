@@ -1,0 +1,77 @@
+#button1{
+    -fx-background-image:url(../assets/btn4.PNG);
+    -fx-background-size:cover;
+    -fx-border-style: none;
+    -fx-border-width: 0;
+    -fx-border-insets: 0;
+    -fx-background-color: transparent;
+}
+#button2{
+    -fx-background-image:url(../assets/btn2.PNG);
+    -fx-background-size:cover;
+    -fx-border-style: none;
+    -fx-border-width: 0;
+    -fx-border-insets: 0;
+    -fx-background-color: transparent;
+
+}
+#button3{
+    -fx-background-image:url(../assets/btn3.PNG);
+    -fx-background-size:cover;
+    -fx-border-style: none;
+    -fx-border-width: 0;
+    -fx-border-insets: 0;
+    -fx-background-color: transparent;
+}
+#button4{
+    -fx-background-image:url(../assets/btn4.PNG);
+    -fx-background-size:cover;
+    -fx-border-style: none;
+    -fx-border-width: 0;
+    -fx-border-insets: 0;
+    -fx-background-color: transparent;
+
+}
+#button5{
+    -fx-background-image:url(../assets/btn5.PNG);
+    -fx-background-size:cover;
+    -fx-border-style: none;
+    -fx-border-width: 0;
+    -fx-border-insets: 0;
+    -fx-background-color: transparent;
+
+}
+#button6{
+    -fx-background-image:url(../assets/btn6.PNG);
+    -fx-background-size:cover;
+    -fx-border-style: none;
+    -fx-border-width: 0;
+    -fx-border-insets: 0;
+    -fx-background-color: transparent;
+
+}
+#button7{
+    -fx-background-image:url(../assets/btn7.PNG);
+    -fx-background-size:cover;
+    -fx-border-style: none;
+    -fx-border-width: 0;
+    -fx-border-insets: 0;
+    -fx-background-color: transparent;
+}
+#button8{
+    -fx-background-image:url(../assets/btn8.PNG);
+    -fx-background-size:cover;
+    -fx-border-style: none;
+    -fx-border-width: 0;
+    -fx-border-insets: 0;
+    -fx-background-color: transparent;
+
+}
+#button9{
+    -fx-background-image:url(../assets/btn9.PNG);
+    -fx-background-size:cover;
+    -fx-border-style: none;
+    -fx-border-width: 0;
+    -fx-border-insets: 0;
+    -fx-background-color: transparent;
+}
