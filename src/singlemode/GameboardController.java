@@ -67,6 +67,7 @@ public class GameboardController implements Initializable {
     private Label drawScore;
     boolean GameEnds = false;
     public static boolean xTurn;
+    public static boolean oTurn;
     
 
     Random random = new Random();
@@ -110,6 +111,10 @@ public class GameboardController implements Initializable {
                 for (int i = 0; i < 9; i++) {
                     boardButtons.get(i).setText("");
                 }
+                if(oTurn==false)
+                    xTurn=true;
+                 else
+                    xTurn=false;
             }
         });
     }
@@ -139,10 +144,18 @@ public class GameboardController implements Initializable {
             drawScore.setText(Integer.valueOf(drawScore.getText()) + 1 + "");
         }
         if (GameEnds == true) {
-            if (xTurn == true) {
-                score1.setText(Integer.valueOf(score1.getText()) + 1 + "");
-            } else {
-                score2.setText(Integer.valueOf(score2.getText()) + 1 + "");
+            if(oTurn==true)
+                if (xTurn == true) {
+                    score1.setText(Integer.valueOf(score1.getText()) + 1 + "");
+                } else {
+                    score2.setText(Integer.valueOf(score2.getText()) + 1 + "");
+                }
+            else{
+                if (xTurn == true) {
+                    score2.setText(Integer.valueOf(score2.getText()) + 1 + "");
+                } else {
+                    score1.setText(Integer.valueOf(score1.getText()) + 1 + "");
+                }
             }
         }
     }
