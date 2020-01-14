@@ -19,7 +19,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+<<<<<<< HEAD
 import javafx.stage.Stage;
+=======
+import twomode.TwoModeController;
+>>>>>>> ade140fcd376df9b4941a9f7b70e8cc188409850
 
 /**
  * FXML Controller class
@@ -85,7 +89,7 @@ public class GameboardController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        player1.setText(singleFormController.namex);
         boardButtons.add(button1);
         boardButtons.add(button2);
         boardButtons.add(button3);

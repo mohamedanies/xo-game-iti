@@ -31,6 +31,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import tec_tac_toe.Home;
+import static twomode.TwoModeController.nameo;
+import static twomode.TwoModeController.namex;
 
 /**
  *
@@ -59,6 +61,7 @@ public class singleFormController implements Initializable {
     Stage stage;
     boolean xSelected;
     boolean ySelected;
+    public static String namex;
 
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
@@ -81,15 +84,17 @@ public class singleFormController implements Initializable {
 
             @Override
             public void handle(MouseEvent event) {
-                System.out.println("esraa");
-
+                if (Textname.getText() != null && Textname.getText().length() != 0 && Textname.getText() != " ") {
+                    namex = Textname.getText() + " :";
+                } else {
+                    namex = "playerx " + ":";
+                }
                 try {
 
                     fxmlLoader = new FXMLLoader(getClass().getResource("gameboard.fxml"));
                     root1 = (Parent) fxmlLoader.load();
                     stage = new Stage();
                     stage.initModality(Modality.APPLICATION_MODAL);
-                    //stage.initStyle(StageStyle.UNDECORATED);
                     stage.setTitle("Enter name");
                     stage.setScene(new Scene(root1));
                     stage.setResizable(false);
