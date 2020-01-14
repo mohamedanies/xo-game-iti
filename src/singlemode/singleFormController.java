@@ -105,6 +105,17 @@ public class singleFormController implements Initializable {
 
             }
         });
+              Cancelbtn.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+
+                Stage stage = (Stage) Cancelbtn.getScene().getWindow();
+                stage.close();
+
+            }
+
+        });
         ChooseX.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {

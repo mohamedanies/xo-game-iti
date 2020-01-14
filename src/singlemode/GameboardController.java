@@ -19,7 +19,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+<<<<<<< HEAD
+import javafx.stage.Stage;
+=======
 import twomode.TwoModeController;
+>>>>>>> ade140fcd376df9b4941a9f7b70e8cc188409850
 
 /**
  * FXML Controller class
@@ -69,7 +73,6 @@ public class GameboardController implements Initializable {
     boolean GameEnds = false;
     public static boolean xTurn;
     public static boolean oTurn;
-    
 
     Random random = new Random();
     int randomNumber;
@@ -112,10 +115,19 @@ public class GameboardController implements Initializable {
                 for (int i = 0; i < 9; i++) {
                     boardButtons.get(i).setText("");
                 }
-                if(oTurn==false)
-                    xTurn=true;
-                 else
-                    xTurn=false;
+                if (oTurn == false) {
+                    xTurn = true;
+                } else {
+                    xTurn = false;
+                }
+            }
+        });
+        backButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Stage stage = (Stage) backButton.getScene().getWindow();
+                stage.close();
+
             }
         });
     }
@@ -145,13 +157,13 @@ public class GameboardController implements Initializable {
             drawScore.setText(Integer.valueOf(drawScore.getText()) + 1 + "");
         }
         if (GameEnds == true) {
-            if(oTurn==true)
+            if (oTurn == true) {
                 if (xTurn == true) {
                     score1.setText(Integer.valueOf(score1.getText()) + 1 + "");
                 } else {
                     score2.setText(Integer.valueOf(score2.getText()) + 1 + "");
                 }
-            else{
+            } else {
                 if (xTurn == true) {
                     score2.setText(Integer.valueOf(score2.getText()) + 1 + "");
                 } else {
@@ -166,13 +178,13 @@ public class GameboardController implements Initializable {
         if (GameEnds == false && clickedButton.getText().equals("")) {
             counter++;
             clickedButton.setOpacity(1);
-            if(xTurn==true){
+            if (xTurn == true) {
+                
                 clickedButton.setText("X");
-                xTurn=false;
-            }
-            else{
+                xTurn = false;
+            } else {
                 clickedButton.setText("O");
-                xTurn=true;
+                xTurn = true;
             }
             winner();
             if (GameEnds == false && counter < 9) {
@@ -183,12 +195,12 @@ public class GameboardController implements Initializable {
                 for (;;) {
                     randomNumber = random.nextInt(9);
                     if (boardButtons.get(randomNumber).getText().equals("")) {
-                        if(xTurn==false){
+                        if (xTurn == false) {
                             boardButtons.get(randomNumber).setText("O");
-                            xTurn=true;
-                        }else{
+                            xTurn = true;
+                        } else {
                             boardButtons.get(randomNumber).setText("X");
-                            xTurn=false;
+                            xTurn = false;
                         }
                         boardButtons.get(randomNumber).setOpacity(1);
                         break;
@@ -201,5 +213,5 @@ public class GameboardController implements Initializable {
             }
         }
     }
-    
+
 }

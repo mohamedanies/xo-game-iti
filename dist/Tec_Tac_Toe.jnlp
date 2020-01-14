@@ -8,7 +8,23 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+<<<<<<< HEAD
     <jar href="Tec_Tac_Toe.jar" size="5242878" download="eager" />
+=======
+<<<<<<< HEAD
+    <jar href="Tec_Tac_Toe.jar" size="5244732" download="eager" />
+=======
+<<<<<<< HEAD
+    <jar href="Tec_Tac_Toe.jar" size="258100" download="eager" />
+=======
+<<<<<<< HEAD
+    <jar href="Tec_Tac_Toe.jar" size="5243839" download="eager" />
+=======
+    <jar href="Tec_Tac_Toe.jar" size="257835" download="eager" />
+>>>>>>> feee8a41ad4c9f93ce80296457b6c7112fc9376a
+>>>>>>> e97041b12032349d7ee2c3cd0b119c75d7029242
+>>>>>>> ade140fcd376df9b4941a9f7b70e8cc188409850
+>>>>>>> b290e357b485a1b743466b6e4ddbed90de60a2a8
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Tec_Tac_Toe" >
     <param name="requiredFXVersion" value="8.0+"/>
