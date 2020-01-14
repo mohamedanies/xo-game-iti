@@ -5,17 +5,27 @@
  */
 package twomode;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 
 /**
@@ -68,6 +78,7 @@ public class boardController implements Initializable {
     boolean GameEnds = false;
     boolean computer = true;
     int counter = 0;
+    Media media;
 
     /**
      * Initializes the controller class.
@@ -76,7 +87,7 @@ public class boardController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         player1.setText(TwoModeController.namex);
         player2.setText(TwoModeController.nameo);
-        
+
         button8.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -333,6 +344,31 @@ public class boardController implements Initializable {
                 || (s2.equals(s5) && s2.equals(s8) && s2 != "0")
                 || (s3.equals(s6) && s3.equals(s9) && s3 != "0")) {
             GameEnds = true;
+            String path = "src/assets/success.mp4";
+            media = new Media(new File(path).toURI().toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(media);
+            MediaView mediaView = new MediaView(mediaPlayer);
+            mediaPlayer.setAutoPlay(true);
+//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//            alert.setResizable(true);
+//            alert.setTitle("You won YAY");
+//            alert.getDialogPane().setMinHeight(500);
+//            alert.getDialogPane().setMinWidth(500);
+            Label winning = new Label("Congrats You won");
+            winning.setAlignment(Pos.CENTER);
+            VBox content = new VBox(10, winning, mediaView);
+            content.setAlignment(Pos.CENTER);
+            Dialog d1 = new Dialog();
+            d1.setResizable(true);
+            d1.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+            d1.getDialogPane().setContent(content);
+            d1.getDialogPane().setMinHeight(500);
+            d1.getDialogPane().setMinWidth(500);
+           
+            d1.setOnShowing(e -> mediaPlayer.play());
+            d1.setOnCloseRequest(e -> mediaPlayer.stop());
+            d1.show();
+
         }
         if (counter == 9 && GameEnds == false) {
             drawScore.setText(Integer.valueOf(drawScore.getText()) + 1 + "");
