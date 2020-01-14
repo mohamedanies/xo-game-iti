@@ -75,23 +75,7 @@ public class singleFormController implements Initializable {
 
         //RadioButton rb2 = new RadioButton("Calendar");
         ChooseY.setToggleGroup(group);
-        if (ChooseX.isSelected() == true) {
-            xSelected = true;
-            System.out.println("x is selected");
-        } else if (ChooseY.isSelected() == true) {
-            ySelected = true;
-            System.out.println("o is selected");
-        }
 
-        group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
-            public void changed(ObservableValue<? extends Toggle> ov,
-                    Toggle old_toggle, Toggle new_toggle) {
-                if (group.getSelectedToggle() != null) {
-                    System.out.println(group.getSelectedToggle());
-
-                }
-            }
-        });
 
         Okbtn.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
@@ -120,14 +104,15 @@ public class singleFormController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 GameboardController.xTurn = true;
-                System.out.println(GameboardController.xTurn);
+                GameboardController.oTurn = false;
+        
             }
         });
         ChooseY.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 GameboardController.xTurn = false;
-                System.out.println(GameboardController.xTurn);
+                GameboardController.oTurn = true;
             }
         });
     }

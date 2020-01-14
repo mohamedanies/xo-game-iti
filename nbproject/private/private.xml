@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/ITI%20Lec/JavaLab/Netbeans/Tec_Tac_Toe/src/tec_tac_toe/Tec_Tac_Toe.java</file>
-            <file>file:/D:/ITI%20Lec/JavaLab/Netbeans/Tec_Tac_Toe/src/tec_tac_toe/FXMLDocumentController.java</file>
-            <file>file:/D:/ITI%20Lec/JavaLab/Netbeans/Tec_Tac_Toe/src/tec_tac_toe/FXMLDocument.fxml</file>
+            <file>file:/D:/ITI/Java/Tic%20Tac%20Toe/xo-game-iti/src/twomode/TwoModeController.java</file>
+            <file>file:/D:/ITI/Java/Tic%20Tac%20Toe/xo-game-iti/src/singlemode/gameboard.fxml</file>
+            <file>file:/D:/ITI/Java/Tic%20Tac%20Toe/xo-game-iti/src/twomode/boardController.java</file>
+            <file>file:/D:/ITI/Java/Tic%20Tac%20Toe/xo-game-iti/src/twomode/gameboard.fxml</file>
         </group>
     </open-files>
 </project-private>
