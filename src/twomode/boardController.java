@@ -91,8 +91,8 @@ public class boardController implements Initializable {
         button8.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                button8.setStyle("-fx-text-fill: white");
                 if (xTurn == true && "0".equals(character[2][1]) && GameEnds == false) {
+                    button8.setStyle("-fx-text-fill: #FEFF49");
                     character[2][1] = "X";
                     button8.setOpacity(1);
                     button8.setText("X");
@@ -102,6 +102,7 @@ public class boardController implements Initializable {
                 } else if (xTurn == false && "0".equals(character[2][1]) && GameEnds == false) {
                     character[2][1] = "O";
                     button8.setOpacity(1);
+                    button8.setStyle("-fx-text-fill: #FF3E80");
                     button8.setText("O");
                     counter++;
                     winner();
@@ -112,8 +113,9 @@ public class boardController implements Initializable {
         button4.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                button4.setStyle("-fx-text-fill: white");
+
                 if (xTurn == true && "0".equals(character[1][0]) && GameEnds == false) {
+                    button4.setStyle("-fx-text-fill: #FEFF49");
                     character[1][0] = "X";
                     button4.setOpacity(1);;
                     button4.setText("X");
@@ -122,7 +124,8 @@ public class boardController implements Initializable {
                     xTurn = false;
                 } else if (xTurn == false && "0".equals(character[1][0]) && GameEnds == false) {
                     character[1][0] = "O";
-                    button4.setOpacity(1);;
+                    button4.setOpacity(1);
+                    button4.setStyle("-fx-text-fill: #FF3E80");
                     button4.setText("O");
                     counter++;
                     winner();
@@ -133,17 +136,19 @@ public class boardController implements Initializable {
         button7.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                button7.setStyle("-fx-text-fill: white");
+
                 if (xTurn == true && "0".equals(character[2][0]) && GameEnds == false) {
                     character[2][0] = "X";
-                    button7.setOpacity(1);;
+                    button7.setOpacity(1);
+                    button7.setStyle("-fx-text-fill: #FEFF49");
                     button7.setText("X");
                     counter++;
                     winner();
                     xTurn = false;
                 } else if (xTurn == false && "0".equals(character[2][0]) && GameEnds == false) {
                     character[2][0] = "O";
-                    button7.setOpacity(1);;
+                    button7.setOpacity(1);
+                    button7.setStyle("-fx-text-fill: #FF3E80");
                     button7.setText("O");
                     counter++;
                     winner();
@@ -157,14 +162,16 @@ public class boardController implements Initializable {
                 button2.setStyle("-fx-text-fill: white");
                 if (xTurn == true && "0".equals(character[0][1]) && GameEnds == false) {
                     character[0][1] = "X";
-                    button2.setOpacity(1);;
+                    button2.setStyle("-fx-text-fill: #FEFF49");
+                    button2.setOpacity(1);
                     button2.setText("X");
                     counter++;
                     winner();
                     xTurn = false;
                 } else if (xTurn == false && "0".equals(character[0][1]) && GameEnds == false) {
                     character[0][1] = "O";
-                    button2.setOpacity(1);;
+                    button2.setStyle("-fx-text-fill: #FF3E80");
+                    button2.setOpacity(1);
                     button2.setText("O");
                     counter++;
                     winner();
@@ -179,6 +186,7 @@ public class boardController implements Initializable {
                 if (xTurn == true && "0".equals(character[0][2]) && GameEnds == false) {
                     character[0][2] = "X";
                     button3.setOpacity(1);
+                    button3.setStyle("-fx-text-fill: #FEFF49");
                     button3.setText("X");
                     counter++;
                     winner();
@@ -186,6 +194,7 @@ public class boardController implements Initializable {
                 } else if (xTurn == false && "0".equals(character[0][2]) && GameEnds == false) {
                     character[0][2] = "O";
                     button3.setOpacity(1);
+                    button3.setStyle("-fx-text-fill: #FF3E80");
                     button3.setText("O");
                     counter++;
                     winner();
@@ -199,14 +208,16 @@ public class boardController implements Initializable {
                 button6.setStyle("-fx-text-fill: white");
                 if (xTurn == true && "0".equals(character[1][2]) && GameEnds == false) {
                     character[1][2] = "X";
-                    button6.setOpacity(1);;
+                    button6.setOpacity(1);
+                    button6.setStyle("-fx-text-fill: #FEFF49");
                     button6.setText("X");
                     counter++;
                     winner();
                     xTurn = false;
                 } else if (xTurn == false && "0".equals(character[1][2]) && GameEnds == false) {
                     character[1][2] = "O";
-                    button6.setOpacity(1);;
+                    button6.setOpacity(1);
+                    button6.setStyle("-fx-text-fill: #FF3E80");
                     button6.setText("O");
                     counter++;
                     winner();
@@ -217,16 +228,18 @@ public class boardController implements Initializable {
         button5.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                button5.setStyle("-fx-text-fill: white");
+//                button5.setStyle("-fx-text-fill: white");
                 if (xTurn == true && "0".equals(character[1][1]) && GameEnds == false) {
                     character[1][1] = "X";
                     button5.setOpacity(1);
+                    button5.setStyle("-fx-text-fill: #FEFF49");
                     button5.setText("X");
                     counter++;
                     winner();
                     xTurn = false;
                 } else if (xTurn == false && "0".equals(character[1][1]) && GameEnds == false) {
                     character[1][1] = "O";
+                    button5.setStyle("-fx-text-fill: #FF3E80");
                     button5.setOpacity(1);
                     button5.setText("O");
                     counter++;
@@ -242,13 +255,15 @@ public class boardController implements Initializable {
                 if (xTurn == true && "0".equals(character[0][0]) && GameEnds == false) {
                     character[0][0] = "X";
                     button1.setOpacity(1);
+                    button1.setStyle("-fx-text-fill: #FEFF49");
                     button1.setText("X");
                     counter++;
                     winner();
                     xTurn = false;
                 } else if (xTurn == false && "0".equals(character[0][0]) && GameEnds == false) {
                     character[0][0] = "O";
-                    button1.setOpacity(1);;
+                    button1.setStyle("-fx-text-fill: #FF3E80");
+                    button1.setOpacity(1);
                     button1.setText("O");
                     counter++;
                     winner();
@@ -262,14 +277,16 @@ public class boardController implements Initializable {
                 button9.setStyle("-fx-text-fill: white");
                 if (xTurn == true && "0".equals(character[2][2]) && GameEnds == false) {
                     character[2][2] = "X";
-                    button9.setOpacity(1);;
+                    button9.setOpacity(1);
+                    button9.setStyle("-fx-text-fill: #FEFF49");
                     button9.setText("X");
                     counter++;
                     winner();
                     xTurn = false;
                 } else if (xTurn == false && "0".equals(character[2][2]) && GameEnds == false) {
                     character[2][2] = "O";
-                    button9.setOpacity(1);;
+                    button9.setOpacity(1);
+                    button9.setStyle("-fx-text-fill: #FF3E80");
                     button9.setText("O");
                     counter++;
                     winner();
@@ -364,7 +381,7 @@ public class boardController implements Initializable {
             d1.getDialogPane().setContent(content);
             d1.getDialogPane().setMinHeight(500);
             d1.getDialogPane().setMinWidth(500);
-           
+
             d1.setOnShowing(e -> mediaPlayer.play());
             d1.setOnCloseRequest(e -> mediaPlayer.stop());
             d1.show();
