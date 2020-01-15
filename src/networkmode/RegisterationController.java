@@ -78,9 +78,10 @@ public class RegisterationController extends Thread implements Initializable {
         
         while(true){
             try {
-                s=new Socket("127.0.0.1", 5005);
+                s=new Socket("192.168.230.1", 5005);
                 dis=new DataInputStream(s.getInputStream());   
                 String reply=dis.readLine();
+                System.out.println("vv");
                 if(reply.equals("valid"))
                     System.out.println("valid :D");
            

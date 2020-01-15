@@ -2,6 +2,7 @@ package tec_tac_toe;
 
 //import xogame.singleUser;
 import java.io.IOException;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.EventHandler;
@@ -10,11 +11,16 @@ import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -124,7 +130,7 @@ public class Home extends AnchorPane {
                     //stage.initStyle(StageStyle.UNDECORATED);
                     stage.setTitle("Enter name");
                     stage.setScene(new Scene(root1));
-                     stage.setResizable(false);
+                    stage.setResizable(false);
                     stage.show();
                 } catch (IOException ex) {
                     Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
@@ -146,7 +152,7 @@ public class Home extends AnchorPane {
                     //stage.initStyle(StageStyle.UNDECORATED);
                     stage.setTitle("Enter name");
                     stage.setScene(new Scene(root1));
-                     stage.setResizable(false);
+                    stage.setResizable(false);
                     stage.show();
                 } catch (IOException ex) {
                     Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
@@ -158,6 +164,26 @@ public class Home extends AnchorPane {
 
             @Override
             public void handle(MouseEvent event) {
+//                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+////            alert.setResizable(true);
+//                Label label1 = new Label("Please Enter server ip address");
+//                TextField textField = new TextField();
+//                HBox hb = new HBox();
+//                hb.getChildren().addAll(label1, textField);
+//                
+//                        
+//                alert.setTitle("Enter server ip");
+////                alert.setDialogPane(h);
+//                alert.getDialogPane().setMinHeight(100);
+//                alert.getDialogPane().setMinWidth(100);
+//                TextInputDialog dialog = new TextInputDialog("walter");
+//                dialog.setTitle("Text Input Dialog");
+//                dialog.setHeaderText("Please enter server ip address");
+//                dialog.setContentText("Server ip:");
+//                Optional<String> result = dialog.showAndWait();
+//                if (result.isPresent()) {
+//                    System.out.println("your ip is: " + result.get());
+//                }
 
                 try {
 
@@ -165,7 +191,6 @@ public class Home extends AnchorPane {
                     root1 = (Parent) fxmlLoader.load();
                     stage = new Stage();
                     stage.initModality(Modality.APPLICATION_MODAL);
-                    //stage.initStyle(StageStyle.UNDECORATED);
                     stage.setTitle("Enter name");
                     stage.setScene(new Scene(root1));
                      stage.setResizable(false);
@@ -173,7 +198,6 @@ public class Home extends AnchorPane {
                 } catch (IOException ex) {
                     Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
             }
         });
         Exit.setOnMouseClicked(new EventHandler<MouseEvent>() {
