@@ -36,6 +36,7 @@ public class Home extends AnchorPane {
     FXMLLoader fxmlLoader;
     Parent root1;
     Stage stage;
+    public static String serverIp;
 
     public Home() {
 
@@ -176,28 +177,32 @@ public class Home extends AnchorPane {
 ////                alert.setDialogPane(h);
 //                alert.getDialogPane().setMinHeight(100);
 //                alert.getDialogPane().setMinWidth(100);
-//                TextInputDialog dialog = new TextInputDialog("walter");
-//                dialog.setTitle("Text Input Dialog");
-//                dialog.setHeaderText("Please enter server ip address");
-//                dialog.setContentText("Server ip:");
-//                Optional<String> result = dialog.showAndWait();
-//                if (result.isPresent()) {
-//                    System.out.println("your ip is: " + result.get());
-//                }
+                TextInputDialog dialog = new TextInputDialog("walter");
+                dialog.setTitle("Text Input Dialog");
+                dialog.setHeaderText("Please enter server ip address");
+                dialog.setContentText("Server ip:");
+                Optional<String> result = dialog.showAndWait();
+                if (result.isPresent()) {
+                    serverIp = result.get();
+                    System.out.println("your ip is: " + result.get());
+                    if (validate(serverIp) == true) {
+                        try {
 
-                try {
+                            fxmlLoader = new FXMLLoader(getClass().getResource("/networkmode/Registeration.fxml"));
+                            root1 = (Parent) fxmlLoader.load();
+                            stage = new Stage();
+                            stage.initModality(Modality.APPLICATION_MODAL);
+                            stage.setTitle("Enter name");
+                            stage.setScene(new Scene(root1));
+                            stage.setResizable(false);
+                            stage.show();
+                        } catch (IOException ex) {
+                            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+                        }
 
-                    fxmlLoader = new FXMLLoader(getClass().getResource("/networkmode/Registeration.fxml"));
-                    root1 = (Parent) fxmlLoader.load();
-                    stage = new Stage();
-                    stage.initModality(Modality.APPLICATION_MODAL);
-                    stage.setTitle("Enter name");
-                    stage.setScene(new Scene(root1));
-                     stage.setResizable(false);
-                    stage.show();
-                } catch (IOException ex) {
-                    Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
+
             }
         });
         Exit.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -210,5 +215,11 @@ public class Home extends AnchorPane {
 
             }
         });
+
+    }
+
+    public static boolean validate(final String ip) {
+        String PATTERN = "^((0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)\\.){3}(0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)$";
+        return ip.matches(PATTERN);
     }
 }
