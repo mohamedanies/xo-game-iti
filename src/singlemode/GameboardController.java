@@ -19,11 +19,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-<<<<<<< HEAD
 import javafx.stage.Stage;
-=======
 import twomode.TwoModeController;
->>>>>>> ade140fcd376df9b4941a9f7b70e8cc188409850
 
 /**
  * FXML Controller class
