@@ -8,9 +8,12 @@ package networkmode;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.net.URL;
+
 import java.util.Optional;
+
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -56,10 +59,12 @@ public class RegisterationController extends Thread implements Initializable {
     Socket s;
     DataInputStream dis;
     PrintStream ps;
+
     String serverIp;
     FXMLLoader fxmlLoader;
     Parent root;
     Stage stage;
+
 
     /**
      * Initializes the controller class.
@@ -68,6 +73,7 @@ public class RegisterationController extends Thread implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         Thread th;
         th = new Thread(this);
+
 //        TextInputDialog dialog = new TextInputDialog("walter");
 //        dialog.setTitle("Text Input Dialog");
 //        dialog.setHeaderText("Please enter server ip address");
@@ -80,6 +86,7 @@ public class RegisterationController extends Thread implements Initializable {
 //        }
         serverIp = Home.serverIp;
         th.start();
+
 
         Go.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
@@ -134,8 +141,10 @@ public class RegisterationController extends Thread implements Initializable {
 
         while (true) {
             try {
+
 //                System.out.println(serverIp);
                 s = new Socket(serverIp, 5005);
+
                 dis = new DataInputStream(s.getInputStream());
                 String reply = dis.readLine();
                 if (reply.equals("valid")) {
@@ -148,9 +157,11 @@ public class RegisterationController extends Thread implements Initializable {
 //              TextArea.setText("Server is disconnected...");
 //              break;
             }
+
 //            10.140.200.207
 
         }
     }
+
 
 }
