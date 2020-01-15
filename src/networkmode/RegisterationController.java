@@ -8,8 +8,10 @@ package networkmode;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -48,7 +50,6 @@ public class RegisterationController extends Thread implements Initializable {
     Socket s;
     DataInputStream dis;
     PrintStream ps;
-    
 
     /**
      * Initializes the controller class.
@@ -56,60 +57,66 @@ public class RegisterationController extends Thread implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Thread th;
-        th =new Thread(this);
+        th = new Thread(this);
         th.start();
+        try {
+            System.out.println(InetAddress.getLocalHost().getHostAddress());
+        } catch (UnknownHostException ex) {
+            Logger.getLogger(RegisterationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Go.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-                
-                if(UserName.getText()!=null&&Password.getText()!=null){
+
+                if (UserName.getText() != null && Password.getText() != null) {
                     try {
-                        ps=new PrintStream(s.getOutputStream());
-                        ps.println("login"+"."+ UserName.getText() + "." + Password.getText());
+                        ps = new PrintStream(s.getOutputStream());
+                        ps.println("login" + "." + UserName.getText() + "." + Password.getText());
                         UserName.clear();
                         Password.clear();
                     } catch (IOException ex) {
                         Logger.getLogger(RegisterationController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-            }   
+            }
         });
         register.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-                
-                if(UserName.getText()!=null&&Password.getText()!=null){
+
+                if (UserName.getText() != null && Password.getText() != null) {
                     try {
-                        ps=new PrintStream(s.getOutputStream());
-                        ps.println("register"+"."+ UserName.getText()+"."+ Password.getText());
+                        ps = new PrintStream(s.getOutputStream());
+                        ps.println("register" + "." + UserName.getText() + "." + Password.getText());
                         UserName.clear();
                         Password.clear();
                     } catch (IOException ex) {
                         Logger.getLogger(RegisterationController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-            }   
+            }
         });
-        
+
     }
-@Override
-        public void run(){
-        
-        while(true){
+
+    @Override
+    public void run() {
+
+        while (true) {
             try {
-                s=new Socket("127.0.0.1", 5005);
-                dis=new DataInputStream(s.getInputStream());   
-                String reply=dis.readLine();
-                if(reply.equals("valid"))
+
+                s = new Socket("127.0.0.1", 5005);
+                dis = new DataInputStream(s.getInputStream());
+                String reply = dis.readLine();
+                if (reply.equals("valid")) {
                     System.out.println("valid :D");
-           
-                
+                }
+
             } catch (IOException ex) {
-              //  Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+                //  Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
 //              TextArea.clear();
 //              TextArea.setText("Server is disconnected...");
 //              break;
             }
-            
+
         }
-        }    
-    
+    }
 }

@@ -7,6 +7,7 @@ package twomode;
 
 import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -79,6 +80,10 @@ public class boardController implements Initializable {
     boolean computer = true;
     int counter = 0;
     Media media;
+    public ArrayList<Button> boardButtons = new ArrayList<Button>();
+    EventHandler<ActionEvent> eventHandler = (ActionEvent e) -> {
+        actionPerformed(e);
+    };
 
     /**
      * Initializes the controller class.
@@ -87,213 +92,21 @@ public class boardController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         player1.setText(TwoModeController.namex);
         player2.setText(TwoModeController.nameo);
-
-        button8.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                if (xTurn == true && "0".equals(character[2][1]) && GameEnds == false) {
-                    button8.setStyle("-fx-text-fill: #FEFF49");
-                    character[2][1] = "X";
-                    button8.setOpacity(1);
-                    button8.setText("X");
-                    counter++;
-                    winner();
-                    xTurn = false;
-                } else if (xTurn == false && "0".equals(character[2][1]) && GameEnds == false) {
-                    character[2][1] = "O";
-                    button8.setOpacity(1);
-                    button8.setStyle("-fx-text-fill: #FF3E80");
-                    button8.setText("O");
-                    counter++;
-                    winner();
-                    xTurn = true;
-                }
-            }
-        });
-        button4.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-
-                if (xTurn == true && "0".equals(character[1][0]) && GameEnds == false) {
-                    button4.setStyle("-fx-text-fill: #FEFF49");
-                    character[1][0] = "X";
-                    button4.setOpacity(1);;
-                    button4.setText("X");
-                    counter++;
-                    winner();
-                    xTurn = false;
-                } else if (xTurn == false && "0".equals(character[1][0]) && GameEnds == false) {
-                    character[1][0] = "O";
-                    button4.setOpacity(1);
-                    button4.setStyle("-fx-text-fill: #FF3E80");
-                    button4.setText("O");
-                    counter++;
-                    winner();
-                    xTurn = true;
-                }
-            }
-        });
-        button7.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-
-                if (xTurn == true && "0".equals(character[2][0]) && GameEnds == false) {
-                    character[2][0] = "X";
-                    button7.setOpacity(1);
-                    button7.setStyle("-fx-text-fill: #FEFF49");
-                    button7.setText("X");
-                    counter++;
-                    winner();
-                    xTurn = false;
-                } else if (xTurn == false && "0".equals(character[2][0]) && GameEnds == false) {
-                    character[2][0] = "O";
-                    button7.setOpacity(1);
-                    button7.setStyle("-fx-text-fill: #FF3E80");
-                    button7.setText("O");
-                    counter++;
-                    winner();
-                    xTurn = true;
-                }
-            }
-        });
-        button2.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                button2.setStyle("-fx-text-fill: white");
-                if (xTurn == true && "0".equals(character[0][1]) && GameEnds == false) {
-                    character[0][1] = "X";
-                    button2.setStyle("-fx-text-fill: #FEFF49");
-                    button2.setOpacity(1);
-                    button2.setText("X");
-                    counter++;
-                    winner();
-                    xTurn = false;
-                } else if (xTurn == false && "0".equals(character[0][1]) && GameEnds == false) {
-                    character[0][1] = "O";
-                    button2.setStyle("-fx-text-fill: #FF3E80");
-                    button2.setOpacity(1);
-                    button2.setText("O");
-                    counter++;
-                    winner();
-                    xTurn = true;
-                }
-            }
-        });
-        button3.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                button3.setStyle("-fx-text-fill: white");
-                if (xTurn == true && "0".equals(character[0][2]) && GameEnds == false) {
-                    character[0][2] = "X";
-                    button3.setOpacity(1);
-                    button3.setStyle("-fx-text-fill: #FEFF49");
-                    button3.setText("X");
-                    counter++;
-                    winner();
-                    xTurn = false;
-                } else if (xTurn == false && "0".equals(character[0][2]) && GameEnds == false) {
-                    character[0][2] = "O";
-                    button3.setOpacity(1);
-                    button3.setStyle("-fx-text-fill: #FF3E80");
-                    button3.setText("O");
-                    counter++;
-                    winner();
-                    xTurn = true;
-                }
-            }
-        });
-        button6.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                button6.setStyle("-fx-text-fill: white");
-                if (xTurn == true && "0".equals(character[1][2]) && GameEnds == false) {
-                    character[1][2] = "X";
-                    button6.setOpacity(1);
-                    button6.setStyle("-fx-text-fill: #FEFF49");
-                    button6.setText("X");
-                    counter++;
-                    winner();
-                    xTurn = false;
-                } else if (xTurn == false && "0".equals(character[1][2]) && GameEnds == false) {
-                    character[1][2] = "O";
-                    button6.setOpacity(1);
-                    button6.setStyle("-fx-text-fill: #FF3E80");
-                    button6.setText("O");
-                    counter++;
-                    winner();
-                    xTurn = true;
-                }
-            }
-        });
-        button5.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-//                button5.setStyle("-fx-text-fill: white");
-                if (xTurn == true && "0".equals(character[1][1]) && GameEnds == false) {
-                    character[1][1] = "X";
-                    button5.setOpacity(1);
-                    button5.setStyle("-fx-text-fill: #FEFF49");
-                    button5.setText("X");
-                    counter++;
-                    winner();
-                    xTurn = false;
-                } else if (xTurn == false && "0".equals(character[1][1]) && GameEnds == false) {
-                    character[1][1] = "O";
-                    button5.setStyle("-fx-text-fill: #FF3E80");
-                    button5.setOpacity(1);
-                    button5.setText("O");
-                    counter++;
-                    winner();
-                    xTurn = true;
-                }
-            }
-        });
-        button1.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                button1.setStyle("-fx-text-fill: white");
-                if (xTurn == true && "0".equals(character[0][0]) && GameEnds == false) {
-                    character[0][0] = "X";
-                    button1.setOpacity(1);
-                    button1.setStyle("-fx-text-fill: #FEFF49");
-                    button1.setText("X");
-                    counter++;
-                    winner();
-                    xTurn = false;
-                } else if (xTurn == false && "0".equals(character[0][0]) && GameEnds == false) {
-                    character[0][0] = "O";
-                    button1.setStyle("-fx-text-fill: #FF3E80");
-                    button1.setOpacity(1);
-                    button1.setText("O");
-                    counter++;
-                    winner();
-                    xTurn = true;
-                }
-            }
-        });
-        button9.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                button9.setStyle("-fx-text-fill: white");
-                if (xTurn == true && "0".equals(character[2][2]) && GameEnds == false) {
-                    character[2][2] = "X";
-                    button9.setOpacity(1);
-                    button9.setStyle("-fx-text-fill: #FEFF49");
-                    button9.setText("X");
-                    counter++;
-                    winner();
-                    xTurn = false;
-                } else if (xTurn == false && "0".equals(character[2][2]) && GameEnds == false) {
-                    character[2][2] = "O";
-                    button9.setOpacity(1);
-                    button9.setStyle("-fx-text-fill: #FF3E80");
-                    button9.setText("O");
-                    counter++;
-                    winner();
-                    xTurn = true;
-                }
-            }
-        });
+        boardButtons.add(button1);
+        boardButtons.add(button2);
+        boardButtons.add(button3);
+        boardButtons.add(button4);
+        boardButtons.add(button5);
+        boardButtons.add(button6);
+        boardButtons.add(button7);
+        boardButtons.add(button8);
+        boardButtons.add(button9);
+        for (int i = 0; i < 9; i++) {
+            boardButtons.get(i).setText("");
+            boardButtons.get(i).addEventHandler(ActionEvent.ACTION, e -> {
+                actionPerformed(e);
+            });
+        }
 
         newGame.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
@@ -301,33 +114,10 @@ public class boardController implements Initializable {
                 xTurn = true;
                 GameEnds = false;
                 counter = 0;
-                button1.setText("");
-                button2.setText("");
-                button3.setText("");
-                button4.setText("");
-                button5.setText("");
-                button6.setText("");
-                button7.setText("");
-                button8.setText("");
-                button9.setText("");
-                button1.setOpacity(0);
-                button2.setOpacity(0);
-                button3.setOpacity(0);
-                button4.setOpacity(0);
-                button5.setOpacity(0);
-                button6.setOpacity(0);
-                button7.setOpacity(0);
-                button8.setOpacity(0);
-                button9.setOpacity(0);
-                character[0][0] = "0";
-                character[0][1] = "0";
-                character[0][2] = "0";
-                character[1][0] = "0";
-                character[1][1] = "0";
-                character[1][2] = "0";
-                character[2][0] = "0";
-                character[2][1] = "0";
-                character[2][2] = "0";
+                for (int i = 0; i < 9; i++) {
+                    boardButtons.get(i).setText("");
+                    boardButtons.get(i).setOpacity(0);
+                }
             }
         });
         backButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -342,35 +132,30 @@ public class boardController implements Initializable {
     }
 
     private void winner() {
-        String s1 = character[0][0];
-        String s2 = character[0][1];
-        String s3 = character[0][2];
-        String s4 = character[1][0];
-        String s5 = character[1][1];
-        String s6 = character[1][2];
-        String s7 = character[2][0];
-        String s8 = character[2][1];
-        String s9 = character[2][2];
+        String t00 = boardButtons.get(0).getText();
+        String t01 = boardButtons.get(1).getText();
+        String t02 = boardButtons.get(2).getText();
+        String t10 = boardButtons.get(3).getText();
+        String t11 = boardButtons.get(4).getText();
+        String t12 = boardButtons.get(5).getText();
+        String t20 = boardButtons.get(6).getText();
+        String t21 = boardButtons.get(7).getText();
+        String t22 = boardButtons.get(8).getText();
 
-        if ((s1.equals(s2) && s1.equals(s3) && s1 != "0")
-                || (s4.equals(s5) && s4.equals(s6) && s4 != "0")
-                || (s7.equals(s8) && s7.equals(s9) && s7 != "0")
-                || (s1.equals(s5) && s1.equals(s9) && s1 != "0")
-                || (s3.equals(s5) && s3.equals(s7) && s3 != "0")
-                || (s1.equals(s4) && s1.equals(s7) && s1 != "0")
-                || (s2.equals(s5) && s2.equals(s8) && s2 != "0")
-                || (s3.equals(s6) && s3.equals(s9) && s3 != "0")) {
+        if ((t00.equals(t01) && t00.equals(t02) && !t00.equals(""))
+                || (t10.equals(t11) && t10.equals(t12) && !t10.equals(""))
+                || (t20.equals(t21) && t20.equals(t22) && !t20.equals(""))
+                || (t00.equals(t10) && t00.equals(t20) && !t00.equals(""))
+                || (t01.equals(t11) && t01.equals(t21) && !t01.equals(""))
+                || (t02.equals(t12) && t02.equals(t22) && !t02.equals(""))
+                || (t00.equals(t11) && t00.equals(t22) && !t00.equals(""))
+                || (t02.equals(t11) && t02.equals(t20) && !t02.equals(""))) {
             GameEnds = true;
             String path = "src/assets/success.mp4";
             media = new Media(new File(path).toURI().toString());
             MediaPlayer mediaPlayer = new MediaPlayer(media);
             MediaView mediaView = new MediaView(mediaPlayer);
             mediaPlayer.setAutoPlay(true);
-//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//            alert.setResizable(true);
-//            alert.setTitle("You won YAY");
-//            alert.getDialogPane().setMinHeight(500);
-//            alert.getDialogPane().setMinWidth(500);
             Label winning = new Label("Congrats You won");
             winning.setAlignment(Pos.CENTER);
             VBox content = new VBox(10, winning, mediaView);
@@ -399,4 +184,22 @@ public class boardController implements Initializable {
         }
     }
 
+    private void actionPerformed(ActionEvent e) {
+        Button clickedButton = (Button) e.getSource();
+        if (xTurn == true && clickedButton.getText().equals("")&& GameEnds == false) {
+            clickedButton.setStyle("-fx-text-fill: #FEFF49");
+            clickedButton.setOpacity(1);
+            clickedButton.setText("X");
+            counter++;
+            winner();
+            xTurn = false;
+        } else if (xTurn == false && clickedButton.getText().equals("") && GameEnds == false) {
+            clickedButton.setStyle("-fx-text-fill: #FF3E80");
+            clickedButton.setOpacity(1);
+            clickedButton.setText("O");
+            counter++;
+            winner();
+            xTurn = true;
+        }
+    }
 }

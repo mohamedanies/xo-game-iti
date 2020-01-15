@@ -6,6 +6,7 @@
 package singlemode;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
