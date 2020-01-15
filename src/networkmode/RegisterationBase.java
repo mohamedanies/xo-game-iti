@@ -9,7 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 
-public abstract class RegisterationBase extends AnchorPane {
+public class RegisterationBase extends AnchorPane {
 
     protected final ImageView Background;
     protected final Glow glow;
