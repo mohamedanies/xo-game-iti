@@ -11,18 +11,27 @@ import java.io.PrintStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.URL;
-import java.net.UnknownHostException;
+
+import java.util.Optional;
+
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.ImageView;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import tec_tac_toe.Home;
 
 /**
  * FXML Controller class
@@ -54,6 +63,12 @@ public class RegisterationController extends Thread implements Initializable {
     DataInputStream dis;
     PrintStream ps;
 
+    String serverIp;
+    FXMLLoader fxmlLoader;
+    Parent root;
+    Stage stage;
+
+
     /**
      * Initializes the controller class.
      */
@@ -61,16 +76,26 @@ public class RegisterationController extends Thread implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         Thread th;
         th = new Thread(this);
+
+//        TextInputDialog dialog = new TextInputDialog("walter");
+//        dialog.setTitle("Text Input Dialog");
+//        dialog.setHeaderText("Please enter server ip address");
+//        dialog.setContentText("Server ip:");
+//        Optional<String> result = dialog.showAndWait();
+//        if (result.isPresent()) {
+//            System.out.println("your ip is: " + result.get());
+//            serverIp = result.get();
+//           
+//        }
+        serverIp = Home.serverIp;
         th.start();
-        try {
-            System.out.println(InetAddress.getLocalHost().getHostAddress());
-        } catch (UnknownHostException ex) {
-            Logger.getLogger(RegisterationController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+
         Go.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
 
                 if (UserName.getText() != null && Password.getText() != null) {
+<<<<<<< HEAD
                     if (!(UserName.getText().contains(".")) || !(Password.getText().contains("."))) {
                         try {
                             ps = new PrintStream(s.getOutputStream());
@@ -82,6 +107,30 @@ public class RegisterationController extends Thread implements Initializable {
                         }
                     } else {
                         label.setText("(.)charcter is not allowed");
+=======
+                    try {
+                        ps = new PrintStream(s.getOutputStream());
+                        ps.println("login" + "." + UserName.getText() + "." + Password.getText());
+                        UserName.clear();
+                        Password.clear();
+                        // load list view 
+                        try {
+
+                            fxmlLoader = new FXMLLoader(getClass().getResource("listView.fxml"));
+                            root = (Parent) fxmlLoader.load();
+                            stage = new Stage();
+                            stage.initModality(Modality.APPLICATION_MODAL);
+                            stage.setTitle("Active users");
+                            stage.setScene(new Scene(root));
+                            stage.setResizable(false);
+                            stage.show();
+                        } catch (IOException ex) {
+                            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+
+                    } catch (IOException ex) {
+                        Logger.getLogger(RegisterationController.class.getName()).log(Level.SEVERE, null, ex);
+>>>>>>> c4bbd28f079c95fb957a14e65beeed90f3ee6440
                     }
                 }
             }
@@ -121,7 +170,9 @@ public class RegisterationController extends Thread implements Initializable {
         while (true) {
             try {
 
-                s = new Socket("127.0.0.1", 5005);
+//                System.out.println(serverIp);
+                s = new Socket(serverIp, 5005);
+
                 dis = new DataInputStream(s.getInputStream());
                 String reply = dis.readLine();
                 if (reply.equals("valid")) {
@@ -135,6 +186,10 @@ public class RegisterationController extends Thread implements Initializable {
 //              break;
             }
 
+//            10.140.200.207
+
         }
     }
+
+
 }
