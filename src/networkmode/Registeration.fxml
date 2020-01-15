@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="442.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="networkmode.RegisterationController">
    <children>
-      <ImageView fx:id="Background" fitHeight="500.0" fitWidth="442.0" layoutX="1.0" pickOnBounds="true">
+      <ImageView fx:id="Background" fitHeight="500.0" fitWidth="442.0" layoutX="2.0" pickOnBounds="true">
          <image>
             <Image url="@../assets/bg.jpg" />
          </image>
@@ -19,7 +19,7 @@
             <Glow level="0.0" />
          </effect>
       </ImageView>
-      <TextField fx:id="UserName" layoutX="72.0" layoutY="178.0" prefHeight="39.0" prefWidth="301.0" promptText="Please enter your name" />
+      <TextField fx:id="UserName" layoutX="72.0" layoutY="178.0" prefHeight="39.0" prefWidth="301.0" promptText="Please enter your name" text="dgdgfd" />
       <Label fx:id="NameLabel" layoutX="72.0" layoutY="143.0" prefHeight="27.0" prefWidth="120.0" text="User Name" textFill="#ddd8d8">
          <font>
             <Font name="System Bold Italic" size="18.0" />
@@ -46,5 +46,10 @@
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Button>
+      <Label fx:id="label" layoutX="130.0" layoutY="321.0" prefHeight="27.0" prefWidth="177.0" text="label " textFill="#f53838" visible="false">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -47,6 +47,9 @@ public class RegisterationController extends Thread implements Initializable {
     private Button Go;
     @FXML
     private Button register;
+    @FXML
+    private Label label;
+
     Socket s;
     DataInputStream dis;
     PrintStream ps;
@@ -68,13 +71,17 @@ public class RegisterationController extends Thread implements Initializable {
             public void handle(ActionEvent event) {
 
                 if (UserName.getText() != null && Password.getText() != null) {
-                    try {
-                        ps = new PrintStream(s.getOutputStream());
-                        ps.println("login" + "." + UserName.getText() + "." + Password.getText());
-                        UserName.clear();
-                        Password.clear();
-                    } catch (IOException ex) {
-                        Logger.getLogger(RegisterationController.class.getName()).log(Level.SEVERE, null, ex);
+                    if (!(UserName.getText().contains(".")) || !(Password.getText().contains("."))) {
+                        try {
+                            ps = new PrintStream(s.getOutputStream());
+                            ps.println("login" + "." + UserName.getText() + "." + Password.getText());
+                            UserName.clear();
+                            Password.clear();
+                        } catch (IOException ex) {
+                            Logger.getLogger(RegisterationController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } else {
+                        label.setText("(.)charcter is not allowed");
                     }
                 }
             }
@@ -83,14 +90,25 @@ public class RegisterationController extends Thread implements Initializable {
             public void handle(ActionEvent event) {
 
                 if (UserName.getText() != null && Password.getText() != null) {
-                    try {
-                        ps = new PrintStream(s.getOutputStream());
-                        ps.println("register" + "." + UserName.getText() + "." + Password.getText());
-                        UserName.clear();
-                        Password.clear();
-                    } catch (IOException ex) {
-                        Logger.getLogger(RegisterationController.class.getName()).log(Level.SEVERE, null, ex);
+                    label.setVisible(false);
+                    String user=UserName.getText();
+                    String pass=Password.getText();
+                    if (user.indexOf(".")==-1 && pass.indexOf(".")==-1) {
+                        try {
+                            ps = new PrintStream(s.getOutputStream());
+                            ps.println("register" + "." + UserName.getText() + "." + Password.getText());
+                            UserName.clear();
+                            Password.clear();
+                        } catch (IOException ex){
+                            Logger.getLogger(RegisterationController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }else{
+                        label.setVisible(true);
+                        label.setText("(.) is not allowed");
                     }
+                }else{
+                    label.setVisible(true);
+                    label.setText("You Must Insert UserName And Password");
                 }
             }
         });
