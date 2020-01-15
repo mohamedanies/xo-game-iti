@@ -185,7 +185,7 @@ public class Home extends AnchorPane {
                 if (result.isPresent()) {
                     serverIp = result.get();
                     System.out.println("your ip is: " + result.get());
-                    if (validate(serverIp) == true) {
+//                    if (validate(serverIp) == true) {
                         try {
 
                             fxmlLoader = new FXMLLoader(getClass().getResource("/networkmode/Registeration.fxml"));
@@ -200,7 +200,7 @@ public class Home extends AnchorPane {
                             Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
                         }
 
-                    }
+//                    }
                 }
 
             }
