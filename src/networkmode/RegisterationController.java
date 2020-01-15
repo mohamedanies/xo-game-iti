@@ -43,6 +43,8 @@ public class RegisterationController extends Thread implements Initializable {
     private ImageView Logo;
     @FXML
     private Button Go;
+    @FXML
+    private Button register;
     Socket s;
     DataInputStream dis;
     PrintStream ps;
@@ -63,6 +65,21 @@ public class RegisterationController extends Thread implements Initializable {
                     try {
                         ps=new PrintStream(s.getOutputStream());
                         ps.println("login"+"."+ UserName.getText() + "." + Password.getText());
+                        UserName.clear();
+                        Password.clear();
+                    } catch (IOException ex) {
+                        Logger.getLogger(RegisterationController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }   
+        });
+        register.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
+                
+                if(UserName.getText()!=null&&Password.getText()!=null){
+                    try {
+                        ps=new PrintStream(s.getOutputStream());
+                        ps.println("register"+"."+ UserName.getText()+"."+ Password.getText());
                         UserName.clear();
                         Password.clear();
                     } catch (IOException ex) {
