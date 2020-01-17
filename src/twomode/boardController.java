@@ -84,7 +84,6 @@ public class boardController implements Initializable {
     EventHandler<ActionEvent> eventHandler = (ActionEvent e) -> {
         actionPerformed(e);
     };
-
     /**
      * Initializes the controller class.
      */
@@ -125,12 +124,9 @@ public class boardController implements Initializable {
             public void handle(MouseEvent event) {
                 Stage stage = (Stage) backButton.getScene().getWindow();
                 stage.close();
-
             }
         });
-
     }
-
     private void winner() {
         String t00 = boardButtons.get(0).getText();
         String t01 = boardButtons.get(1).getText();
@@ -183,7 +179,6 @@ public class boardController implements Initializable {
             }
         }
     }
-
     private void actionPerformed(ActionEvent e) {
         Button clickedButton = (Button) e.getSource();
         if (xTurn == true && clickedButton.getText().equals("")&& GameEnds == false) {

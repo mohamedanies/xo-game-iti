@@ -56,6 +56,9 @@ public class RegisterationController extends Thread implements Initializable {
     private Button Go;
     @FXML
     private Button register;
+    @FXML
+    private Label label;
+
     Socket s;
     DataInputStream dis;
     PrintStream ps;
@@ -64,7 +67,6 @@ public class RegisterationController extends Thread implements Initializable {
     FXMLLoader fxmlLoader;
     Parent root;
     Stage stage;
-
 
     /**
      * Initializes the controller class.
@@ -87,33 +89,36 @@ public class RegisterationController extends Thread implements Initializable {
         serverIp = Home.serverIp;
         th.start();
 
-
         Go.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
 
                 if (UserName.getText() != null && Password.getText() != null) {
-                    try {
-                        ps = new PrintStream(s.getOutputStream());
-                        ps.println("login" + "." + UserName.getText() + "." + Password.getText());
-                        UserName.clear();
-                        Password.clear();
-                        // load list view 
+
+                    if (!(UserName.getText().contains(".")) || !(Password.getText().contains("."))) {
                         try {
+                            ps = new PrintStream(s.getOutputStream());
+                            ps.println("login" + "." + UserName.getText() + "." + Password.getText());
+                            UserName.clear();
+                            Password.clear();
+                            try {
 
-                            fxmlLoader = new FXMLLoader(getClass().getResource("listView.fxml"));
-                            root = (Parent) fxmlLoader.load();
-                            stage = new Stage();
-                            stage.initModality(Modality.APPLICATION_MODAL);
-                            stage.setTitle("Active users");
-                            stage.setScene(new Scene(root));
-                            stage.setResizable(false);
-                            stage.show();
+                                fxmlLoader = new FXMLLoader(getClass().getResource("listView.fxml"));
+                                root = (Parent) fxmlLoader.load();
+                                stage = new Stage();
+                                stage.initModality(Modality.APPLICATION_MODAL);
+                                stage.setTitle("Active users");
+                                stage.setScene(new Scene(root));
+                                stage.setResizable(false);
+                                stage.show();
+                            } catch (IOException ex) {
+                                Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+                            }
                         } catch (IOException ex) {
-                            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(RegisterationController.class.getName()).log(Level.SEVERE, null, ex);
                         }
+                    } else {
+                        label.setText("(.)charcter is not allowed");
 
-                    } catch (IOException ex) {
-                        Logger.getLogger(RegisterationController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             }
@@ -122,14 +127,25 @@ public class RegisterationController extends Thread implements Initializable {
             public void handle(ActionEvent event) {
 
                 if (UserName.getText() != null && Password.getText() != null) {
-                    try {
-                        ps = new PrintStream(s.getOutputStream());
-                        ps.println("register" + "." + UserName.getText() + "." + Password.getText());
-                        UserName.clear();
-                        Password.clear();
-                    } catch (IOException ex) {
-                        Logger.getLogger(RegisterationController.class.getName()).log(Level.SEVERE, null, ex);
+                    label.setVisible(false);
+                    String user = UserName.getText();
+                    String pass = Password.getText();
+                    if (user.indexOf(".") == -1 && pass.indexOf(".") == -1) {
+                        try {
+                            ps = new PrintStream(s.getOutputStream());
+                            ps.println("register" + "." + UserName.getText() + "." + Password.getText());
+                            UserName.clear();
+                            Password.clear();
+                        } catch (IOException ex) {
+                            Logger.getLogger(RegisterationController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } else {
+                        label.setVisible(true);
+                        label.setText("(.) is not allowed");
                     }
+                } else {
+                    label.setVisible(true);
+                    label.setText("You Must Insert UserName And Password");
                 }
             }
         });
@@ -143,7 +159,7 @@ public class RegisterationController extends Thread implements Initializable {
             try {
 
 //                System.out.println(serverIp);
-                s = new Socket(serverIp, 5005);
+                s = new Socket("127.0.0.1", 5005);
 
                 dis = new DataInputStream(s.getInputStream());
                 String reply = dis.readLine();
@@ -159,9 +175,7 @@ public class RegisterationController extends Thread implements Initializable {
             }
 
 //            10.140.200.207
-
         }
     }
-
 
 }
