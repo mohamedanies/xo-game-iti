@@ -35,6 +35,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import listview.listViewController;
 import static listview.listViewController.listOfPlayers;
+import static networkmode.listViewController.items;
 //import static networkmode.FXMLDocumentBase.listView;
 //import static networkmode.Listview2Controller.listView;
 import tec_tac_toe.Home;
@@ -107,24 +108,22 @@ public class RegisterationController extends Thread implements Initializable {
                             ps.println("login" + "." + UserName.getText() + "." + Password.getText());
                             UserName.clear();
                             Password.clear();
-                            
+                            try {
+
+                                fxmlLoader = new FXMLLoader(getClass().getResource("listView.fxml"));
+                                root = (Parent) fxmlLoader.load();
+                                stage = new Stage();
+                                stage.initModality(Modality.APPLICATION_MODAL);
+                                stage.setTitle("Active users");
+                                stage.setScene(new Scene(root));
+                                stage.setResizable(false);
+                                stage.show();
+                            } catch (IOException ex) {
+                                Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+                            }
                         } catch (IOException ex) {
                             Logger.getLogger(RegisterationController.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                        try {
-                            fxmlLoader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
-                            root = (Parent) fxmlLoader.load();
-                            stage = new Stage();
-                            stage.initModality(Modality.APPLICATION_MODAL);
-                            stage.setTitle("Active users");
-                            stage.setScene(new Scene(root));
-                            stage.setResizable(false);
-                            stage.show();                  
-                        } catch (IOException ex) {
-                            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                   //     if(onlineUsers.get(0)!=null)
-                           // listOfPlayers.getItems().add("sdfdsfdsf");
                     } else {
                         label.setText("(.)charcter is not allowed");
                     }
@@ -168,12 +167,15 @@ public class RegisterationController extends Thread implements Initializable {
 
 //                System.out.println(serverIp);
                 s = new Socket(serverIp, 5005);
+
                 dis = new DataInputStream(s.getInputStream());
                 String reply = dis.readLine();
                 String[] msg = reply.split("[.]");
+                
                 if (msg[0].equals("active")) {
                     System.out.println("activeeee");
-                    //listView.getItems().add("bra");
+                    onlineUsers.add(msg[2]);
+                    items.add(onlineUsers.get(onlineUsers.size()-1));
                 }
 
             } catch (IOException ex) {
