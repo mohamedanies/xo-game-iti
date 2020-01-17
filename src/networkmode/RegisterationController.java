@@ -11,12 +11,14 @@ import java.io.PrintStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.URL;
+import java.util.ArrayList;
 
 import java.util.Optional;
 
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -31,6 +33,10 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import listview.listViewController;
+import static listview.listViewController.listOfPlayers;
+//import static networkmode.FXMLDocumentBase.listView;
+//import static networkmode.Listview2Controller.listView;
 import tec_tac_toe.Home;
 
 /**
@@ -62,12 +68,11 @@ public class RegisterationController extends Thread implements Initializable {
     Socket s;
     DataInputStream dis;
     PrintStream ps;
-
+    public static ArrayList<String> onlineUsers = new ArrayList<String>();
     String serverIp;
     FXMLLoader fxmlLoader;
     Parent root;
     Stage stage;
-
 
     /**
      * Initializes the controller class.
@@ -90,47 +95,38 @@ public class RegisterationController extends Thread implements Initializable {
         serverIp = Home.serverIp;
         th.start();
 
-
         Go.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-
+                
+                
                 if (UserName.getText() != null && Password.getText() != null) {
-<<<<<<< HEAD
+
                     if (!(UserName.getText().contains(".")) || !(Password.getText().contains("."))) {
                         try {
                             ps = new PrintStream(s.getOutputStream());
                             ps.println("login" + "." + UserName.getText() + "." + Password.getText());
                             UserName.clear();
                             Password.clear();
+                            
                         } catch (IOException ex) {
                             Logger.getLogger(RegisterationController.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                    } else {
-                        label.setText("(.)charcter is not allowed");
-=======
-                    try {
-                        ps = new PrintStream(s.getOutputStream());
-                        ps.println("login" + "." + UserName.getText() + "." + Password.getText());
-                        UserName.clear();
-                        Password.clear();
-                        // load list view 
                         try {
-
-                            fxmlLoader = new FXMLLoader(getClass().getResource("listView.fxml"));
+                            fxmlLoader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
                             root = (Parent) fxmlLoader.load();
                             stage = new Stage();
                             stage.initModality(Modality.APPLICATION_MODAL);
                             stage.setTitle("Active users");
                             stage.setScene(new Scene(root));
                             stage.setResizable(false);
-                            stage.show();
+                            stage.show();                  
                         } catch (IOException ex) {
                             Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
                         }
-
-                    } catch (IOException ex) {
-                        Logger.getLogger(RegisterationController.class.getName()).log(Level.SEVERE, null, ex);
->>>>>>> c4bbd28f079c95fb957a14e65beeed90f3ee6440
+                   //     if(onlineUsers.get(0)!=null)
+                           // listOfPlayers.getItems().add("sdfdsfdsf");
+                    } else {
+                        label.setText("(.)charcter is not allowed");
                     }
                 }
             }
@@ -140,22 +136,22 @@ public class RegisterationController extends Thread implements Initializable {
 
                 if (UserName.getText() != null && Password.getText() != null) {
                     label.setVisible(false);
-                    String user=UserName.getText();
-                    String pass=Password.getText();
-                    if (user.indexOf(".")==-1 && pass.indexOf(".")==-1) {
+                    String user = UserName.getText();
+                    String pass = Password.getText();
+                    if (user.indexOf(".") == -1 && pass.indexOf(".") == -1) {
                         try {
                             ps = new PrintStream(s.getOutputStream());
                             ps.println("register" + "." + UserName.getText() + "." + Password.getText());
                             UserName.clear();
                             Password.clear();
-                        } catch (IOException ex){
+                        } catch (IOException ex) {
                             Logger.getLogger(RegisterationController.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                    }else{
+                    } else {
                         label.setVisible(true);
                         label.setText("(.) is not allowed");
                     }
-                }else{
+                } else {
                     label.setVisible(true);
                     label.setText("You Must Insert UserName And Password");
                 }
@@ -172,11 +168,12 @@ public class RegisterationController extends Thread implements Initializable {
 
 //                System.out.println(serverIp);
                 s = new Socket(serverIp, 5005);
-
                 dis = new DataInputStream(s.getInputStream());
                 String reply = dis.readLine();
-                if (reply.equals("valid")) {
-                    System.out.println("valid :D");
+                String[] msg = reply.split("[.]");
+                if (msg[0].equals("active")) {
+                    System.out.println("activeeee");
+                    //listView.getItems().add("bra");
                 }
 
             } catch (IOException ex) {
@@ -187,9 +184,7 @@ public class RegisterationController extends Thread implements Initializable {
             }
 
 //            10.140.200.207
-
         }
     }
-
 
 }
